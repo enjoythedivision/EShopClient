@@ -5,13 +5,16 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cart from './pages/Cart.jsx'
 import Products from './pages/Products.jsx'
+import { useEffect, useState } from 'react'
+import { getProducts } from './api/products.js'
 
 export default function App() {
+  const [products, setProducts] = useState([])
 
-  const products = [
-  { id: 1, name: 'Black T-shirt', price: 20 },
-  { id: 2, name: 'Blue jeans', price: 45 },
-]
+  useEffect(() => {
+    getProducts().then(setProducts)
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -26,4 +29,4 @@ export default function App() {
       </div>
     </BrowserRouter>
   )
-}
+};
