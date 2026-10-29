@@ -31,7 +31,6 @@ async function deleteProduct(id) {
 
     if (!response.ok) throw new Error("Error deleting product.")
 
-    return response.json();
 }
 
 async function createProduct(productData) {
