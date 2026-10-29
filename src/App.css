@@ -68,10 +68,29 @@
 }
 
 .product-card {
+  min-width: 0;
   padding: var(--space-3);
   background: #fff;
   border: 1px solid var(--color-line);
   border-radius: 0.5rem;
+}
+
+.product-card a {
+  display: block;
+  text-decoration: none;
+}
+
+.product-card a:hover h2 {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin-bottom: var(--space-2);
 }
 
 .product-card h2 {
@@ -88,14 +107,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-.page-heading {
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-line);
-}
-
 h1 {
   margin: 0;
-  font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.06em;

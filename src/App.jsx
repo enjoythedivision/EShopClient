@@ -7,6 +7,7 @@ import Cart from './pages/Cart.jsx'
 import Products from './pages/Products.jsx'
 import { useEffect, useState } from 'react'
 import { getProducts } from './api/products.js'
+import Product from './pages/Product.jsx'
 
 export default function App() {
   const [products, setProducts] = useState([])
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products products={products} />} />
+          <Route path="/products/:id" element={<Product />} />
         </Routes>
         <Footer />
       </div>
