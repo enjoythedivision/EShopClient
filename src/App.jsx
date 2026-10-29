@@ -4,17 +4,15 @@ import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import './App.css'
 
-
-
 export default function App() {
   return (
-    <div className="app">
-      <a className="skip-link" href="#main">Skip to content</a>
-      <Header />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="app">
+        <a className="skip-link" href="#main">Skip to content</a>
+        <Header />
         <Home />
-      </BrowserRouter>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
