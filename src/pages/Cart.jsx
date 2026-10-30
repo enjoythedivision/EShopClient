@@ -11,6 +11,7 @@ export default function Cart({ cartItems, setCartItems }) {
               <img src={i.imageUrl} alt="" />
               <span className="cart-title">{i.title}</span>
               <span className="cart-artist">{i.artist}</span>
+              <span>{i.quantity}</span>
             </div>
           ))}
         </>

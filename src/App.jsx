@@ -14,7 +14,19 @@ export default function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+    setCartItems((prev) => {
+      const exists = prev.some((item) => item.id === product.id);
+
+      if (exists) {
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+
+      return [...prev, { ...product, quantity: 1 }];
+    });
   };
 
   useEffect(() => {
