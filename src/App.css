@@ -55,6 +55,21 @@ nav {
   padding-block: clamp(3rem, 8vw, 7rem);
 }
 
+.view-all {
+  display: block;
+  width: fit-content;
+  margin: var(--space-4) auto 0;
+  padding: 0.875rem var(--space-3);
+  border-radius: 0.25rem;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

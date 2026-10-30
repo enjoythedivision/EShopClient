@@ -40,9 +40,9 @@ export default function App() {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <Header />
+        <Header cartItems={cartItems}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home products={products} />} />
           <Route
             path="/checkout"
             element={
