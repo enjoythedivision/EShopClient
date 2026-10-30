@@ -8,7 +8,7 @@ export default function Products({ products }) {
 
   const visibleProducts = products.filter(
     (product) =>
-      category === "" || String(product.productCategory) === category,
+      category === "" || product.productCategory === category,
   );
 
   if (sort === "ascending") {
