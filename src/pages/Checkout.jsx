@@ -1,6 +1,6 @@
 import { useState } from "react";
 export default function Checkout({ cartItems, setCartItems }) {
-  
+
   const [customerName, setCustomerName] = useState("");
   const [email, setEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
@@ -25,13 +25,32 @@ export default function Checkout({ cartItems, setCartItems }) {
         <h2>Customer details</h2>
 
         <label htmlFor="customerName">Full name</label>
-        <input id="customerName" name="customerName" required />
+        <input
+          id="customerName"
+          name="customerName"
+          value={customerName}
+          onChange={(e) => setCustomerName(e.target.value)}
+          required
+        />
 
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
         <label htmlFor="shippingAddress">Shipping address</label>
-        <textarea id="shippingAddress" name="shippingAddress" required />
+        <textarea
+          id="shippingAddress"
+          name="shippingAddress"
+          value={shippingAddress}
+          onChange={(e) => setShippingAddress(e.target.value)}
+          required
+        />
 
         <button type="submit">Place order</button>
       </form>
