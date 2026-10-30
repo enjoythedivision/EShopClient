@@ -61,4 +61,4 @@ async function updateProduct(id, productData) {
     return response.json();
 }
 
-export { getProducts, getProduct }
+export { getProducts, getProduct, updateProduct, createProduct, deleteProduct}
