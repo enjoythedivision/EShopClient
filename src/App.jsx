@@ -30,9 +30,15 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          />
           <Route path="/products" element={<Products products={products} />} />
-          <Route path="/products/:id" element={<Product addToCart={addToCart} />} />
+          <Route
+            path="/products/:id"
+            element={<Product addToCart={addToCart} />}
+          />
         </Routes>
         <Footer />
       </div>
