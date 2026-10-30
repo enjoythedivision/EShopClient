@@ -30,6 +30,12 @@
   text-decoration: none;
 }
 
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+}
+
 .nav-link {
   display: inline-flex;
   align-items: center;
@@ -168,11 +174,6 @@ h1 {
   display: grid;
   place-items: center;
   aspect-ratio: 1;
-  padding: var(--space-3);
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid var(--color-line);
-  border-radius: 0.5rem;
 }
 
 .product-artwork img {
