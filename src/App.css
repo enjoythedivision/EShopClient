@@ -366,7 +366,7 @@ h1 {
 
 .cart-row {
   display: grid;
-  grid-template-columns: 5rem minmax(0, 1fr);
+  grid-template-columns: 5rem minmax(0, 1fr) auto;
   column-gap: var(--space-3);
   row-gap: var(--space-1);
   padding-block: var(--space-3);
@@ -374,7 +374,7 @@ h1 {
 }
 
 .cart-row img {
-  grid-row: span 2;
+  grid-row: span 3;
   width: 100%;
   aspect-ratio: 1;
   object-fit: contain;
@@ -384,13 +384,71 @@ h1 {
 }
 
 .cart-title {
+  grid-column: 2;
   align-self: end;
   font-weight: 500;
   overflow-wrap: anywhere;
 }
 
 .cart-artist {
+  grid-column: 2;
   color: var(--color-muted);
   font-size: 0.875rem;
   overflow-wrap: anywhere;
+}
+
+.cart-row-price {
+  grid-column: 2;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-quantity {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cart-quantity button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: #fff;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.cart-quantity button:hover {
+  border-color: var(--color-text);
+}
+
+@media (max-width: 30rem) {
+  .cart-row {
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    column-gap: var(--space-1);
+  }
+
+  .cart-quantity {
+    gap: var(--space-1);
+  }
+
+  .cart-quantity button {
+    width: 2rem;
+  }
+}
+
+.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 0.875rem var(--space-2);
+  margin-top: var(--space-4);
+  border-radius: 0.25rem;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
 }

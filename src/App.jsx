@@ -8,6 +8,7 @@ import Products from "./pages/Products.jsx";
 import { useEffect, useState } from "react";
 import { getProducts } from "./api/products.js";
 import Product from "./pages/Product.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -42,6 +43,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route
             path="/cart"
             element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
