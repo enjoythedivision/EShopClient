@@ -8,7 +8,6 @@ import Products from './pages/Products.jsx'
 import { useEffect, useState } from 'react'
 import { getProducts } from './api/products.js'
 import Product from './pages/Product.jsx'
-
 export default function App() {
   const [products, setProducts] = useState([])
 
