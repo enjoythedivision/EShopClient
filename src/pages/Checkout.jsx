@@ -1,4 +1,10 @@
+import { useState } from "react";
 export default function Checkout({ cartItems, setCartItems }) {
+  
+  const [customerName, setCustomerName] = useState("");
+  const [email, setEmail] = useState("");
+  const [shippingAddress, setShippingAddress] = useState("");
+
   return (
     <main className="checkout container">
       <h1>Checkout</h1>
