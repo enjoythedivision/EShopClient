@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "./api/products.js";
 import Product from "./pages/Product.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import Category from "./pages/Category.jsx";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -58,6 +59,7 @@ export default function App() {
             path="/products/:id"
             element={<Product addToCart={addToCart} />}
           />
+          <Route path="/category/:id" element={<Category products={products}/>}/>
         </Routes>
         <Footer />
       </div>
