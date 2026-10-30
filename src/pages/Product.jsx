@@ -14,7 +14,9 @@ export default function Product() {
 
   return (
     <main className="product-page container" id="main" tabIndex={-1}>
-      <Link className="product-back" to="/products">← Back to products</Link>
+      <Link className="product-back" to="/products">
+        ← Back to products
+      </Link>
 
       {!product ? (
         <p>Loading product...</p>
@@ -22,9 +24,14 @@ export default function Product() {
         <article className="product-detail">
           <div className="product-artwork">
             {product.imageUrl ? (
-              <img src={product.imageUrl} alt={`${product.title} by ${product.artist}`} />
+              <img
+                src={product.imageUrl}
+                alt={`${product.title} by ${product.artist}`}
+              />
             ) : (
-              <span className="product-artwork-placeholder">No image available</span>
+              <span className="product-artwork-placeholder">
+                No image available
+              </span>
             )}
           </div>
 
@@ -41,10 +48,18 @@ export default function Product() {
               <p>{product.description}</p>
             </div>
 
+            <button className="product-button" disabled={product.stock === 0}>
+              {product.stock === 0 ? "Out of stock" : "Add to cart"}
+            </button>
+
             <dl className="product-facts">
               <div>
                 <dt>Availability</dt>
-                <dd>{product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}</dd>
+                <dd>
+                  {product.stock > 0
+                    ? `${product.stock} in stock`
+                    : "Out of stock"}
+                </dd>
               </div>
             </dl>
           </div>

@@ -236,6 +236,22 @@ h1 {
   white-space: pre-line;
 }
 
+.product-button {
+  width: 100%;
+  padding: 0.875rem var(--space-2);
+  margin-bottom: var(--space-3);
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.product-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .product-facts {
   margin: 0;
   font-size: 0.875rem;
