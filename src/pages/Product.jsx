@@ -35,9 +35,7 @@ export default function Product({addToCart}) {
           </div>
 
           <div className="product-info">
-            <p className="product-category">
-              {product.productCategory ?? product.productCategory}
-            </p>
+            <Link to={`/category/${product.productCategory}`}>{product.productCategory}</Link>
             <h1>{product.title}</h1>
             <p className="product-artist">{product.artist}</p>
             <p className="product-price">€{product.price.toFixed(2)}</p>

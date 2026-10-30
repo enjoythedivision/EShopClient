@@ -52,7 +52,7 @@ nav {
 .products,
 .cart {
   flex: 1;
-  padding-block: clamp(3rem, 8vw, 7rem);
+  padding-block: clamp(3rem, 8vw, 4rem);
 }
 
 .view-all {
