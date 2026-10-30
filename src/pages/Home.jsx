@@ -13,12 +13,14 @@ export default function Home({ products }) {
       <Link className="view-all" to="/products">
         View all products →
       </Link>
-      <div>
-        Browse by category:
-        {categories.map((category) => (
-          <Link to={`/category/${category}`}>{category}</Link>
-        ))}
-      </div>
+      <section className="home-categories">
+        <h2>Browse by category</h2>
+        <div className="category-links">
+          {categories.map((category) => (
+            <Link key={category} to={`/category/${category}`}>{category}</Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
