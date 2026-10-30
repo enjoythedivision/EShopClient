@@ -26,7 +26,6 @@ export default function Product() {
             {product.imageUrl ? (
               <img
                 src={product.imageUrl}
-                alt={`${product.title} by ${product.artist}`}
               />
             ) : (
               <span className="product-artwork-placeholder">
