@@ -1,7 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProduct } from "../api/products.js";
-export default function Product() {
+
+export default function Product({addToCart}) {
+
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
@@ -9,8 +11,6 @@ export default function Product() {
   useEffect(() => {
     getProduct(id).then(setProduct);
   }, [id]);
-
-  const categories = ["Rock", "Metal", "Jazz", "Hip hop", "Electronic"];
 
   return (
     <main className="product-page container" id="main" tabIndex={-1}>
@@ -36,7 +36,7 @@ export default function Product() {
 
           <div className="product-info">
             <p className="product-category">
-              {categories[product.productCategory] ?? product.productCategory}
+              {product.productCategory ?? product.productCategory}
             </p>
             <h1>{product.title}</h1>
             <p className="product-artist">{product.artist}</p>
@@ -47,7 +47,7 @@ export default function Product() {
               <p>{product.description}</p>
             </div>
 
-            <button className="product-button" disabled={product.stock === 0}>
+            <button className="product-button" disabled={product.stock === 0} onClick={() => addToCart(product)}>
               {product.stock === 0 ? "Out of stock" : "Add to cart"}
             </button>
 
