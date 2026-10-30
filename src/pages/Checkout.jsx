@@ -1,9 +1,30 @@
 import { useState } from "react";
+import { createOrder } from "../api/orders";
 export default function Checkout({ cartItems, setCartItems }) {
-
   const [customerName, setCustomerName] = useState("");
   const [email, setEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
+
+  const sendOrder = async (e) => {
+    e.preventDefault();
+
+    const order = {
+      customerName,
+      email,
+      shippingAddress,
+      items: cartItems.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+      })),
+    };
+
+    try {
+      await createOrder(order);
+      setCartItems([]);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <main className="checkout container">
@@ -21,7 +42,7 @@ export default function Checkout({ cartItems, setCartItems }) {
         ))}
       </section>
 
-      <form>
+      <form onSubmit={sendOrder}>
         <h2>Customer details</h2>
 
         <label htmlFor="customerName">Full name</label>
