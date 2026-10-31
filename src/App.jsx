@@ -10,6 +10,7 @@ import { getProducts } from "./api/products.js";
 import Product from "./pages/Product.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Category from "./pages/Category.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -60,6 +61,7 @@ export default function App() {
             element={<Product addToCart={addToCart} />}
           />
           <Route path="/category/:category" element={<Category/>}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
