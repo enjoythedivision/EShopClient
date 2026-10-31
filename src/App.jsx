@@ -59,7 +59,7 @@ export default function App() {
             path="/products/:id"
             element={<Product addToCart={addToCart} />}
           />
-          <Route path="/category/:id" element={<Category products={products}/>}/>
+          <Route path="/category/:category" element={<Category/>}/>
         </Routes>
         <Footer />
       </div>

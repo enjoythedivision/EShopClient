@@ -1,17 +1,20 @@
 import { useParams } from "react-router-dom";
 import ProductGrid from "../components/ProductGrid";
+import { useEffect, useState } from "react";
+import { getProductsByCategory } from "../api/products";
 
-export default function Category({ products }) {
-  const { id } = useParams();
+export default function Category() {
+  const { category } = useParams();
+  const [results, setResults] = useState([]);
 
-  const categoryProducts = products.filter(
-    product => String(product.productCategory) === id
-  );
+  useEffect(() => {
+    getProductsByCategory(category).then(setResults);
+  }, [category]);
 
   return (
     <main className="products container" id="main">
-      <h1>{id}</h1>
-      <ProductGrid products={categoryProducts} />
+      <h1>{category}</h1>
+      <ProductGrid products={results} />
     </main>
   );
 }
