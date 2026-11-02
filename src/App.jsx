@@ -11,6 +11,7 @@ import Product from "./pages/Product.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Category from "./pages/Category.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import OrderStatus from "./pages/OrderStatus.jsx";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -45,6 +46,7 @@ export default function App() {
         <Header cartItems={cartItems}/>
         <Routes>
           <Route path="/" element={<Home products={products} />} />
+          <Route path="/order-complete" element={<OrderStatus />} />
           <Route
             path="/checkout"
             element={

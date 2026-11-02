@@ -1,12 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createOrder } from "../api/orders";
 export default function Checkout({ cartItems, setCartItems }) {
+  const navigate = useNavigate();
   const [customerName, setCustomerName] = useState("");
   const [email, setEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [orderError, setOrderError] = useState("");
 
   const sendOrder = async (e) => {
     e.preventDefault();
+    if (isSubmitting || cartItems.length === 0) return;
+
+    setIsSubmitting(true);
+    setOrderError("");
 
     const order = {
       customerName,
@@ -19,15 +27,21 @@ export default function Checkout({ cartItems, setCartItems }) {
     };
 
     try {
-      await createOrder(order);
+      const createdOrder = await createOrder(order);
       setCartItems([]);
-    } catch (error) {
-      console.error(error.message);
+      navigate("/order-complete", {
+        replace: true,
+        state: { orderComplete: true, orderId: createdOrder?.id },
+      });
+    } catch {
+      setOrderError("Could not place your order. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <main className="checkout container">
+    <main className="checkout container" id="main" tabIndex={-1}>
       <h1>Checkout</h1>
 
       <section>
@@ -73,7 +87,10 @@ export default function Checkout({ cartItems, setCartItems }) {
           required
         />
 
-        <button type="submit">Place order</button>
+        {orderError && <p role="alert">{orderError}</p>}
+        <button type="submit" disabled={isSubmitting || cartItems.length === 0}>
+          {isSubmitting ? "Placing order…" : "Place order"}
+        </button>
       </form>
     </main>
   );
