@@ -5,7 +5,10 @@ async function getProducts() {
     method: "GET",
   });
 
-  if (!response.ok) throw new Error("Error fetching products.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error fetching products.");
+  }
 
   return response.json();
 }
@@ -15,7 +18,10 @@ async function getProduct(id) {
     method: "GET",
   });
 
-  if (!response.ok) throw new Error("Error fetching product.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error fetching product.");
+  }
 
   return response.json();
 }
@@ -25,7 +31,10 @@ async function getProductsByCategory(category) {
     method: "GET",
   });
 
-  if (!response.ok) throw new Error("Error fetching products.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error fetching products.");
+  }
 
   return response.json();
 }
@@ -39,7 +48,10 @@ async function deleteProduct(id) {
     method: "DELETE",
   });
 
-  if (!response.ok) throw new Error("Error deleting product.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error deleting product.");
+  }
 }
 
 async function createProduct(productData) {
@@ -51,7 +63,10 @@ async function createProduct(productData) {
     body: JSON.stringify(productData),
   });
 
-  if (!response.ok) throw new Error("Error creating product.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error creating product.");
+  }
 
   return response.json();
 }
@@ -65,7 +80,10 @@ async function updateProduct(id, productData) {
     body: JSON.stringify(productData),
   });
 
-  if (!response.ok) throw new Error("Error updating product.");
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Error updating product.");
+  }
 
   return response.json();
 }

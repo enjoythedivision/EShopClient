@@ -10,7 +10,8 @@ export async function createOrder(order) {
   });
 
   if (!response.ok) {
-    throw new Error("Could not place order.");
+    const message = await response.text();
+    throw new Error(message || "Error creating order.");
   }
 
   return response.json();
