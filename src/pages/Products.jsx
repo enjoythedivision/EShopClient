@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProductGrid from "../components/ProductGrid";
 
-export default function Products({ products }) {
+export default function Products({ products, error }) {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("");
   const categories = [...new Set(products.map(product => String(product.productCategory)))];
@@ -24,6 +24,7 @@ export default function Products({ products }) {
       <div className="page-heading">
         <h1>Products</h1>
       </div>
+      {error && <p role="alert">{error}</p>}
       <div className="product-filters">
         <fieldset>
           <legend>Category</legend>

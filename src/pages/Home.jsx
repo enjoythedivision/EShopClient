@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductGrid from "../components/ProductGrid";
 
-export default function Home({ products }) {
+export default function Home({ products, error }) {
   const categories = [...new Set(products.map(p => p.productCategory))];
 
   return (
@@ -9,6 +9,7 @@ export default function Home({ products }) {
       <div className="page-heading">
         <h1>Shop</h1>
       </div>
+      {error && <p role="alert">{error}</p>}
       <ProductGrid products={products.slice(0, 6)} />
       <Link className="view-all" to="/products">
         View all products →

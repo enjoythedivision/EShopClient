@@ -7,9 +7,18 @@ export default function Product({addToCart}) {
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    getProduct(id).then(setProduct);
+    getProduct(id)
+      .then((product) => {
+        setProduct(product);
+        setError("");
+      })
+      .catch((error) => {
+        setProduct(null);
+        setError(error.message);
+      });
   }, [id]);
 
   return (
@@ -18,7 +27,9 @@ export default function Product({addToCart}) {
         ← Back to products
       </Link>
 
-      {!product ? (
+      {error ? (
+        <p role="alert">{error}</p>
+      ) : !product ? (
         <p>Loading product...</p>
       ) : (
         <article className="product-detail">

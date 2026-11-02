@@ -15,6 +15,7 @@ import OrderStatus from "./pages/OrderStatus.jsx";
 
 export default function App() {
   const [products, setProducts] = useState([]);
+  const [productsError, setProductsError] = useState("");
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
@@ -34,7 +35,9 @@ export default function App() {
   };
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    getProducts()
+      .then(setProducts)
+      .catch((error) => setProductsError(error.message));
   }, []);
 
   return (
@@ -45,7 +48,7 @@ export default function App() {
         </a>
         <Header cartItems={cartItems}/>
         <Routes>
-          <Route path="/" element={<Home products={products} />} />
+          <Route path="/" element={<Home products={products} error={productsError} />} />
           <Route path="/order-complete" element={<OrderStatus />} />
           <Route
             path="/checkout"
@@ -57,7 +60,7 @@ export default function App() {
             path="/cart"
             element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
           />
-          <Route path="/products" element={<Products products={products} />} />
+          <Route path="/products" element={<Products products={products} error={productsError} />} />
           <Route
             path="/products/:id"
             element={<Product addToCart={addToCart} />}

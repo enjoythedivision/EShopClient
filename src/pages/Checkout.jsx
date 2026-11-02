@@ -33,8 +33,8 @@ export default function Checkout({ cartItems, setCartItems }) {
         replace: true,
         state: { orderComplete: true, orderId: createdOrder?.id },
       });
-    } catch {
-      setOrderError("Could not place your order. Please try again.");
+    } catch (error) {
+      setOrderError(error.message);
     } finally {
       setIsSubmitting(false);
     }
