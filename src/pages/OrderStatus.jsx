@@ -23,7 +23,7 @@ export default function OrderStatus() {
         </p>
         {orderComplete && state.orderId != null && (
           <p className="order-status-reference">
-            Order reference: <strong>{state.orderId}</strong>
+            Order ID: <strong>{state.orderId}</strong>
           </p>
         )}
         <Link className="view-all" to="/products">
