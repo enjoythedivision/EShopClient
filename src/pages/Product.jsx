@@ -37,10 +37,11 @@ export default function Product({addToCart}) {
             {product.imageUrl ? (
               <img
                 src={product.imageUrl}
+                alt={product.title}
               />
             ) : (
               <span className="product-artwork-placeholder">
-                No image available
+                No artwork available
               </span>
             )}
           </div>

@@ -7,7 +7,9 @@ export default function ProductCard({ product }) {
         {product.imageUrl ? (
           <img src={product.imageUrl} alt={product.title} />
         ) : (
-          <div>Cover not available</div>
+          <div className="product-artwork">
+            <span className="product-artwork-placeholder">No artwork available</span>
+          </div>
         )}
         <h2>{product.title}</h2>{" "}
       </Link>
