@@ -16,6 +16,7 @@ import OrderStatus from "./pages/OrderStatus.jsx";
 export default function App() {
   const [products, setProducts] = useState([]);
   const [productsError, setProductsError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
@@ -37,7 +38,8 @@ export default function App() {
   useEffect(() => {
     getProducts()
       .then(setProducts)
-      .catch((error) => setProductsError(error.message));
+      .catch((error) => setProductsError(error.message))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -47,6 +49,14 @@ export default function App() {
           Skip to content
         </a>
         <Header cartItems={cartItems}/>
+        {isLoading ? (
+          <main className="products container" id="main" tabIndex={-1}>
+            <h1>Loading the shop…</h1>
+            <p role="status">
+              The server may need a minute to wake up after inactivity. Thanks for waiting!
+            </p>
+          </main>
+        ) : (
         <Routes>
           <Route path="/" element={<Home products={products} error={productsError} />} />
           <Route path="/order-complete" element={<OrderStatus />} />
@@ -68,6 +78,7 @@ export default function App() {
           <Route path="/category/:category" element={<Category/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        )}
         <Footer />
       </div>
     </BrowserRouter>
